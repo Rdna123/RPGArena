@@ -1,4 +1,6 @@
-package main.java.io.github.rdna123.RPGArena;
+package RPGArena.Character;
+
+import RPGArena.Arena;
 
 public class Rogue extends Character {
 

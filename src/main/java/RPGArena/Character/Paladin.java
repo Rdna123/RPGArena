@@ -1,6 +1,8 @@
-package test.java.io.github.rdna123.RPGArena;
+package RPGArena.Character;
 
-public class Paladin extends Character{
+import RPGArena.Arena;
+
+public class Paladin extends Character {
     public int Inspiration;
 
     public Paladin(int str, int def, int health){

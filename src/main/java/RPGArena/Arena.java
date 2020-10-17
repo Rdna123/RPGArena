@@ -1,11 +1,14 @@
-package main.java.io.github.rdna123.RPGArena;
+package RPGArena;
+
+import RPGArena.Character.Character;
+import RPGArena.Character.Paladin;
 
 import java.util.Random;
 
 public class Arena {
     public static Random generator = new Random();
     public static void main(String[] args) {
-        Character player1 = new Paladin(9, 2, 100);
+        Paladin player1 = new Paladin(9, 2, 100);
         Character player2 = new Character(9, 2, 100);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
