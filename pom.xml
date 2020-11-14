@@ -4,12 +4,11 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>Rdna123</groupId>
+  <groupId>io.github.rdna123</groupId>
   <artifactId>rpg-arena</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.0.1</version>
 
   <name>RPGArena</name>
-  <!-- FIXME change it to the project's website -->
   <url>http://rdna123.github.io</url>
 
   <properties>
@@ -20,10 +19,9 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20200518</version>
     </dependency>
   </dependencies>
 
