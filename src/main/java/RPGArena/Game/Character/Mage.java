@@ -7,13 +7,20 @@ public class Mage extends Character {
     public int magic;
     public int intelligence;
 
-    public Mage(int str, int def, int health, int intel) {
+    public Mage(){
+
+    }
+
+
+
+    @SuppressWarnings("unused")
+    public Mage(int str, int def) {
         super();
         this.className = "Mage ";
         this.strength = str - 1;
         this.defense = def - 1;
-        this.health = health - 1;
-        this.intelligence = intel;
+        this.health = 100 - 1;
+        this.intelligence = Arena.generator.nextInt(1000);
     }
 
     public int attack(Character target) {

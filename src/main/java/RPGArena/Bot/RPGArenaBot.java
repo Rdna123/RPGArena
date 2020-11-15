@@ -8,12 +8,30 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class RPGArenaBot extends ListenerAdapter{
 
+    private static String BOT_TOKEN;
 
-    private static final String BOT_TOKEN ="Nzc2ODYyNDI1NjI1Mzk1Mjcx.X67Dgw.vjkN9-VrC9FdsTzpTulEDM8On5E";
+    private static void read(){
+        try {
+            File myObj = new File("Bot.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                BOT_TOKEN = myReader.nextLine();
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
     public static void botStart() throws LoginException {
+        read();
         JDA api = JDABuilder.createDefault(BOT_TOKEN).build();
         api.addEventListener(new MyListener());
     }

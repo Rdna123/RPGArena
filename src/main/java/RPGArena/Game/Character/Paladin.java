@@ -5,12 +5,16 @@ import RPGArena.Game.Arena;
 public class Paladin extends Character {
     public int Inspiration;
 
-    public Paladin(int str, int def, int health){
+    public Paladin(){
+
+    }
+
+    public Paladin(int str, int def){
         super();
         this.className = "Paladin ";
         this.strength = str-4;
         this.defense = def+2;
-        this.health = health-1;
+        this.health = 100-1;
     }
 
     public int takeDamage(int damage) {

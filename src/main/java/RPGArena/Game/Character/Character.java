@@ -15,17 +15,17 @@ public class Character {
     @SuppressWarnings("SpellCheckingInspection")
     public static String[] nameList = {"Geoff", "Steve", "Krogar", "Dave", "Keith", "Deven"};
 
-    public Character() {
+    public Character(){
+
+    }
+
+    public Character(int str, int def) {
         this.name = nameList[Arena.generator.nextInt(nameList.length)];
         this.className = "Fighter ";
         this.wins = 0;
-    }
-
-    public Character(int str, int def, int health) {
-        this();
         this.strength = str;
         this.defense = def;
-        this.health = health;
+        this.health = 100;
     }
 
     public int takeDamage(int damage) {
