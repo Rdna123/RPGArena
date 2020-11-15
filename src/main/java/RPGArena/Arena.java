@@ -47,8 +47,11 @@ public class Arena {
 
             if (!input.equalsIgnoreCase("shutdown")) {
                 if (input.equalsIgnoreCase("test")) {
+
+                    DiscordRPC.discordRunCallbacks();
                     presence.setDetails("Running Test");
                     DiscordRPC.discordUpdatePresence(presence.build());
+
                     while (player1.isAlive() && player2.isAlive()) {
 
                         System.out.println(player1.name + ": " + player1.health);
