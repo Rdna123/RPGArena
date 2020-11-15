@@ -1,17 +1,21 @@
-package RPGArena.Character;
+package RPGArena.Game.Character;
 
-import RPGArena.Arena;
+import RPGArena.Game.Arena;
 
 public class Rogue extends Character {
 
     public int dexterity = 25;
 
-    public Rogue(int str, int def, int health){
+    public Rogue(){
+
+    }
+
+    public Rogue(int str, int def){
         super();
         this.className = "Rogue ";
         this.strength = str-1;
         this.defense = def-1;
-        this.health = health-12;
+        this.health = 100-12;
     }
 
     public int attack(Character target){
