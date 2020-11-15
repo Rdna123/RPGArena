@@ -10,12 +10,15 @@ public class Character {
     public int health;
     public int defense;
 
+    public int wins;
+
     @SuppressWarnings("SpellCheckingInspection")
     public static String[] nameList = {"Geoff", "Steve", "Krogar", "Dave", "Keith", "Deven"};
 
     public Character() {
         this.name = nameList[Arena.generator.nextInt(nameList.length)];
         this.className = "Fighter ";
+        this.wins = 0;
     }
 
     public Character(int str, int def, int health) {

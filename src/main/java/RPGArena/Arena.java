@@ -1,7 +1,6 @@
 package RPGArena;
 
 import RPGArena.Character.Character;
-import RPGArena.Character.Paladin;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
@@ -12,11 +11,12 @@ import java.util.Scanner;
 public class Arena {
     private static boolean ready = true;
     public static Random generator = new Random();
+
     public static void main(String[] args) {
         initDiscord();
 
-        Paladin player1 = new Paladin(9, 2, 100);
-        Character player2 = new Character(9, 2, 100);
+        Character player1 = new Character(0, 2, 100);
+        Character player2 = new Character(1, 2, 100);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
 //        player1.health = 50;
@@ -36,8 +36,9 @@ public class Arena {
             if(!ready)
                 continue;
 
-            DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("Score: ");
-            presence.setDetails("Running Test");
+            DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("Winning: ");
+            presence.setBigImage("large", "RPGArena");
+            presence.setDetails("Idle");
             DiscordRPC.discordUpdatePresence(presence.build());
 
             System.out.print("> ");
@@ -49,6 +50,7 @@ public class Arena {
                     presence.setDetails("Running Test");
                     DiscordRPC.discordUpdatePresence(presence.build());
                     while (player1.isAlive() && player2.isAlive()) {
+
                         System.out.println(player1.name + ": " + player1.health);
                         System.out.println(player2.name + ": " + player2.health + "\n\n");
 
@@ -59,8 +61,7 @@ public class Arena {
 
                         damage = player2.attack(player1);
                         System.out.println(player2.name + " hits " + player1.name + " for " + damage + "\n");
-
-
+                        
                     }
                 } else {
                     System.out.println("Unknown Command: " +
