@@ -1,6 +1,6 @@
-package RPGArena.Character;
+package RPGArena.Game.Character;
 
-import RPGArena.Arena;
+import RPGArena.Game.Arena;
 
 public class Paladin extends Character {
     public int Inspiration;
