@@ -1,7 +1,16 @@
+/*
+ * Copyright 2020 Robert Kimura
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 package RPGArena.Game;
 
 import RPGArena.Game.Character.Character;
-import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
@@ -9,14 +18,12 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Arena {
-    private static boolean ready = true;
     public static Random generator = new Random();
 
-    public static void main(String[] args) {
-        initDiscord();
+    public static void arena() {
 
         Character player1 = new Character(0, 2, 100);
-        Character player2 = new Character(1, 2, 100);
+        Character player2 = new Character(5, 2, 100);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
 //        player1.health = 50;
@@ -33,9 +40,6 @@ public class Arena {
         while (player1.isAlive() && player2.isAlive()) {
             DiscordRPC.discordRunCallbacks();
 
-            if(!ready)
-                continue;
-
             DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("Winning: ");
             presence.setBigImage("large", "RPGArena");
             presence.setDetails("Idle");
@@ -45,7 +49,7 @@ public class Arena {
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
 
-            if (!input.equalsIgnoreCase("shutdown")) {
+            if (!input.equalsIgnoreCase("quit")) {
                 if (input.equalsIgnoreCase("test")) {
 
                     DiscordRPC.discordRunCallbacks();
@@ -69,7 +73,7 @@ public class Arena {
                 } else {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
-                            "\ntest - Test.\nshutdown - End this test peacefully.");
+                            "\ntest - Test.\nquit - End this test peacefully.");
                 }
             } else {
 //                frame.dispose();
@@ -80,24 +84,11 @@ public class Arena {
 
         if(player1.isAlive()) {
             System.out.println(player1.name + " wins!");
-            DiscordRPC.discordShutdown();
         } else if (player2.isAlive()) {
             System.out.println(player2.name + " wins!");
-            DiscordRPC.discordShutdown();
         } else {
             System.out.println("It's a draw!");
-            DiscordRPC.discordShutdown();
         }
     }
-    private static void initDiscord() {
-        DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
-            Arena.ready = true;
-            System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");
-            DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("Score: ");
-            presence.setDetails("Running Test");
-            DiscordRPC.discordUpdatePresence(presence.build());
-        }).build();
-        DiscordRPC.discordInitialize("776862425625395271", handlers, false);
-        DiscordRPC.discordRegister("776862425625395271", "");
-    }
+
 }
