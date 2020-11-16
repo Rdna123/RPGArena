@@ -25,13 +25,11 @@ public class Arena {
 
     public static void arena() {
         boolean blank = true;
-        boolean blank1 = true;
-        boolean blank2 = true;
 
         boolean running = true;
 
-        Character player1 = null;
-        Character player2 = null;
+        Character player1 = new Character(0, 2);
+        Character player2 = new Character(0, 2);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
 //        player1.health = 50;
@@ -55,11 +53,110 @@ public class Arena {
             String input = in.nextLine();
 
             if (!input.equalsIgnoreCase("quit")) {
-                if (input.equalsIgnoreCase("play")) {
+                if(input.equalsIgnoreCase("custom")){
+                    blank = false;
 
-                    if(blank){
-                        player1 = new Character(0, 2);
-                        player2 = new Character(10, 2);
+                    for (int i = 0;i<1;i++) {
+
+                        System.out.print("game-custom-p1 name> ");
+                        in = new Scanner(System.in);
+                        input = in.nextLine();
+                        String name = input;
+
+                        System.out.println("\nClasses: Fighter(Default), Mage, Paladin, and Rogue\n");
+                        System.out.print("game-custom-p1 class> ");
+                        in = new Scanner(System.in);
+                        input = in.nextLine();
+
+                        String inno = input.toLowerCase();
+
+                        System.out.println("Enter strength");
+                        System.out.print("game-custom-p1 Str> ");
+                        in = new Scanner(System.in);
+                        int inputInt= in.nextInt();
+                        int strength = inputInt;
+
+
+                        System.out.print("game-custom-p1 Def> ");
+                        in = new Scanner(System.in);
+                        inputInt = in.nextInt();
+                        int defense = inputInt;
+
+
+                        switch (inno){
+                            case "paladin":
+                                player1 = new Paladin(strength, defense);
+                                player1.name = name;
+                                break;
+                            case "rogue":
+                                player1 = new Rogue(strength, defense);
+                                player1.name = name;
+                                break;
+                            case "mage":
+                                player1 = new Mage(strength, defense);
+                                player1.name = name;
+                                break;
+                            default:
+                                player1 = new Character(strength, defense);
+                                player2.name = name;
+                                break;
+                        }
+                        System.out.println("Player1 set to "+ player1.className + "\n");
+
+
+                        System.out.print("game-custom-p2 name> ");
+                        in = new Scanner(System.in);
+                        input = in.nextLine();
+                        name = input;
+
+                        System.out.println("\nClasses: Fighter(Default), Mage, Paladin, and Rogue\n");
+                        System.out.print("game-custom-p2 class> ");
+                        in = new Scanner(System.in);
+                        input = in.nextLine();
+
+                        inno = input.toLowerCase();
+
+                        System.out.println("Enter strength");
+                        System.out.print("game-custom-p2 Str> ");
+                        in = new Scanner(System.in);
+                        inputInt= in.nextInt();
+                        strength = inputInt;
+
+
+                        System.out.print("game-custom-p2 Def> ");
+                        in = new Scanner(System.in);
+                        inputInt = in.nextInt();
+                        defense = inputInt;
+
+                        System.out.println(input);
+                        switch (inno) {
+                            case "paladin":
+                                player2 = new Paladin(strength, defense);
+                                player2.name = name;
+                                break;
+                            case "rogue":
+                                player2 = new Rogue(strength, defense);
+                                player2.name = name;
+                                break;
+                            case "mage":
+                                player2 = new Mage(strength, defense);
+                                player2.name = name;
+                                break;
+                            default:
+                                player2 = new Character(strength, defense);
+                                player2.name = name;
+                                break;
+                        }
+                        System.out.println("Player2 set to "+ player2.className);
+
+                        System.out.println("\nCustom Characters ready.");
+                    }
+
+                } else if (input.equalsIgnoreCase("play")) {
+
+                    if (blank){
+                        player1 = new Character(12, 10);
+                        player2 = new Character(5, 10);
                     }
 
                     System.out.println(player1.className + player1.name + " vs. " + player2.className + player2.name);
@@ -94,115 +191,10 @@ public class Arena {
                     } else {
                         System.out.println("It's a draw!");
                     }
-
-                } else if(input.equalsIgnoreCase("custom")){
-                    blank = false;
-
-                    while (blank1 == true || blank2 == true) {
-
-                            System.out.print("game-custom-p1 name> ");
-                            in = new Scanner(System.in);
-                            input = in.nextLine();
-                            String name = input;
-
-                            System.out.println("\nClasses: Fighter(Default), Mage, Paladin, and Rogue\n");
-                            System.out.print("game-custom-p1 class> ");
-                            in = new Scanner(System.in);
-                            input = in.nextLine();
-
-                            System.out.println("Enter strength");
-                            System.out.print("game-custom-p1 Str> ");
-                            in = new Scanner(System.in);
-                            int inputInt= in.nextInt();
-                            int strength = inputInt;
-
-
-                            System.out.print("game-custom-p1 Def> ");
-                            in = new Scanner(System.in);
-                            inputInt = in.nextInt();
-                            int defense = inputInt;
-
-
-                            input.toLowerCase();
-                            switch (input){
-                                case "paladin":
-                                    player1 = new Paladin(strength, defense);
-                                    player1.name = name;
-                                    blank1 = false;
-                                case "rogue":
-                                    player1 = new Rogue(strength, defense);
-                                    player1.name = name;
-                                    blank1 = false;
-                                case "mage":
-                                    player1 = new Mage(strength, defense);
-                                    player1.name = name;
-                                    blank1 = false;
-                                default:
-                                    player1 = new Character(strength, defense);
-                                    player2.name = name;
-                                    blank1 = false;
-                            }
-                            System.out.println("Player1 set to "+ player1.className + "\n");
-
-
-                            System.out.print("game-custom-p2 name> ");
-                            in = new Scanner(System.in);
-                            input = in.nextLine();
-                            name = input;
-
-                            System.out.println("\nClasses: Fighter(Default), Mage, Paladin, and Rogue\n");
-                            System.out.print("game-custom-p2 class> ");
-                            in = new Scanner(System.in);
-                            input = in.nextLine();
-
-                            System.out.println("Enter strength");
-                            System.out.print("game-custom-p2 Str> ");
-                            in = new Scanner(System.in);
-                            inputInt= in.nextInt();
-                            strength = inputInt;
-
-
-                            System.out.print("game-custom-p2 Def> ");
-                            in = new Scanner(System.in);
-                            inputInt = in.nextInt();
-                            defense = inputInt;
-                            switch (input) {
-                                case "paladin":
-                                    player2 = new Paladin(strength, defense);
-                                    player2.name = name;
-                                    blank2 = false;
-                                case "rogue":
-                                    player2 = new Rogue(strength, defense);
-                                    player2.name = name;
-                                    blank2 = false;
-                                case "mage":
-                                    player2 = new Mage(strength, defense);
-                                    player2.name = name;
-                                    blank2 = false;
-                                default:
-                                    player2 = new Character(strength, defense);
-                                    player2.name = name;
-                                    blank2 =  false;
-                            }
-                            System.out.println("Player2 set to "+ player2.className);
-
-                            System.out.print("game-custom-p2 Str> ");
-                            in = new Scanner(System.in);
-                            inputInt= in.nextInt();
-                            System.out.println("Enter strength");
-                            player2.strength = inputInt;
-
-                            System.out.print("game-custom-p2 Def> ");
-                            in = new Scanner(System.in);
-                            inputInt = in.nextInt();
-                            System.out.println("Enter defence");
-                            player2.defense = inputInt;
-
-                        }
-                      } else {
-                        System.out.println("Unknown Command: " +
-                                "\n\nAvailable Commands:" +
-                                "\nplay - play game.\ncustom - make a custom character\nquit - End this test peacefully.");
+                } else {
+                    System.out.println("Unknown Command: " +
+                            "\n\nAvailable Commands:" +
+                            "\nplay - play game.\ncustom - make a custom character\nquit - End this test peacefully.");
                     }
             } else {
 //                frame.dispose();

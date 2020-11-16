@@ -1,11 +1,14 @@
 package RPGArena.Bot;
 
+import net.arikia.dev.drpc.DiscordRPC;
+import net.arikia.dev.drpc.DiscordRichPresence;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import org.apache.commons.lang3.time.StopWatch;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
@@ -34,6 +37,7 @@ public class RPGArenaBot extends ListenerAdapter{
         read();
         JDA api = JDABuilder.createDefault(BOT_TOKEN).build();
         api.addEventListener(new MyListener());
+
     }
     public static class MyListener extends ListenerAdapter
     {
@@ -49,7 +53,17 @@ public class RPGArenaBot extends ListenerAdapter{
             if (content.equals("!ping"))
             {
                 MessageChannel channel = event.getChannel();
-                channel.sendMessage("Pong!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
+                channel.sendMessage("Pong!").queue();// Important to call .queue() on the RestAction returned by sendMessage(...)
+
+
+
+
+                DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("Time Elapsed: " );
+                presence.setBigImage("large", "RPGArena");
+                presence.setDetails("Running RPGArena bot");
+                DiscordRPC.discordUpdatePresence(presence.build());
+
+                DiscordRPC.discordRunCallbacks();
             }
         }
     }
