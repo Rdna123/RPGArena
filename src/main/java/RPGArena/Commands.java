@@ -11,37 +11,56 @@ import java.util.Scanner;
 
 public class Commands {
 
+    public static boolean mode = true;
+
     private static boolean ready = false;
 
     private static boolean quit = false;
 
     public static void main(String[] args) throws LoginException {
+        mode = true;
 
-        initDiscord();
+        System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
+        System.out.print("mode > ");
+        Scanner in = new Scanner(System.in);
+
+        mode = in.nextBoolean();
+
+        System.out.println(mode);
+
+        if (mode)
+            initDiscord();
+
+
 
         while (!quit) {
-            DiscordRPC.discordRunCallbacks();
-
-            if (!ready)
-                continue;
-
-            DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("");
-            presence.setBigImage("large", "RPGArena");
-            presence.setDetails("Starting");
-            DiscordRPC.discordUpdatePresence(presence.build());
-
-            DiscordRPC.discordRunCallbacks();
+            if (mode) {
+                DiscordRPC.discordRunCallbacks();
+                if (!ready)
+                    continue;
 
 
-            System.out.print("> ");
-            Scanner in = new Scanner(System.in);
+                DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("");
+                presence.setBigImage("large", "RPGArena");
+                presence.setDetails("Starting");
+                DiscordRPC.discordUpdatePresence(presence.build());
+
+                DiscordRPC.discordRunCallbacks();
+            }
+
+            System.out.print("Main Menu> ");
+            in = new Scanner(System.in);
             String input = in.nextLine();
 
             if (!input.equalsIgnoreCase("shutdown")) {
                 if (input.equalsIgnoreCase("game")) {
                     Arena.arena();
                 } else if (input.equalsIgnoreCase("bot")) {
-                    RPGArenaBot.botStart();
+                    if (mode) {
+                        RPGArenaBot.botStart();
+                    } else {
+                        System.out.println("This command not available in offline mode");
+                    }
                 } else {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
@@ -49,7 +68,8 @@ public class Commands {
                 }
             } else {
                 quit = true;
-                DiscordRPC.discordShutdown();
+                if (mode){
+                    DiscordRPC.discordShutdown();}
                 System.exit(0);
             }
         }
