@@ -10,6 +10,7 @@
 
 package RPGArena.Game;
 
+import RPGArena.Commands;
 import RPGArena.Game.Character.Character;
 import RPGArena.Game.Character.Mage;
 import RPGArena.Game.Character.Paladin;
@@ -21,6 +22,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Arena {
+
+    private static DiscordRichPresence.Builder presence;
     public static Random generator = new Random();
 
     public static void arena() {
@@ -41,13 +44,17 @@ public class Arena {
 //        player2.defense = 2;
 
         while (running) {
-            DiscordRPC.discordRunCallbacks();
 
-            DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("Winning: ");
-            presence.setBigImage("large", "RPGArena");
-            presence.setDetails("Idle");
-            DiscordRPC.discordUpdatePresence(presence.build());
+            if (Commands.mode) {
+                DiscordRPC.discordRunCallbacks();
 
+                presence = new DiscordRichPresence.Builder("Winning: ");
+                presence.setBigImage("large", "RPGArena");
+                presence.setDetails("Idle");
+                DiscordRPC.discordUpdatePresence(presence.build());
+
+
+            }
             System.out.print("> ");
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
@@ -162,9 +169,11 @@ public class Arena {
                     System.out.println(player1.className + player1.name + " vs. " + player2.className + player2.name);
                     System.out.println(player1.health + " vs. " + player2.health + "\n");
 
-                    DiscordRPC.discordRunCallbacks();
-                    presence.setDetails("Playing RPGArena");
-                    DiscordRPC.discordUpdatePresence(presence.build());
+                    if (Commands.mode) {
+                        DiscordRPC.discordRunCallbacks();
+                        presence.setDetails("Playing RPGArena");
+                        DiscordRPC.discordUpdatePresence(presence.build());
+                    }
 
                     while (player1.isAlive() && player2.isAlive()) {
 
