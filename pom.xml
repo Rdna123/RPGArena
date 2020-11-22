@@ -17,14 +17,6 @@
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>jcenter</id>
-      <url>https://jcenter.bintray.com/</url>
-    </repository>
-  </repositories>
-
-
 
   <dependencies>
     <dependency>
@@ -37,12 +29,6 @@
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>1.2.3</version>
-    </dependency>
-
-    <dependency>
-      <groupId>net.dv8tion</groupId>
-      <artifactId>JDA</artifactId>
-      <version>1.2.2_139</version>
     </dependency>
 
     <dependency>
