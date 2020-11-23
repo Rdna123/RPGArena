@@ -25,14 +25,16 @@ public class Arena {
 
     private static DiscordRichPresence.Builder presence;
     public static Random generator = new Random();
+    public static boolean blank = true;
 
+    public static Character player1, player2;
     public static void arena() {
-        boolean blank = true;
+
 
         boolean running = true;
 
-        Character player1 = new Character(0, 2);
-        Character player2 = new Character(0, 2);
+        player1 = new Character(0, 2);
+        player2 = new Character(0, 2);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
 //        player1.health = 50;
@@ -61,103 +63,8 @@ public class Arena {
 
             if (!input.equalsIgnoreCase("quit")) {
                 if(input.equalsIgnoreCase("custom")){
-                    blank = false;
 
-                    for (int i = 0;i<1;i++) {
-
-                        System.out.print("game-custom-p1 name> ");
-                        in = new Scanner(System.in);
-                        input = in.nextLine();
-                        String name = input;
-
-                        System.out.println("\nClasses: Fighter(Default), Mage, Paladin, and Rogue\n");
-                        System.out.print("game-custom-p1 class> ");
-                        in = new Scanner(System.in);
-                        input = in.nextLine();
-
-                        String inno = input.toLowerCase();
-
-                        System.out.println("Enter strength");
-                        System.out.print("game-custom-p1 Str> ");
-                        in = new Scanner(System.in);
-                        int inputInt= in.nextInt();
-                        int strength = inputInt;
-
-
-                        System.out.print("game-custom-p1 Def> ");
-                        in = new Scanner(System.in);
-                        inputInt = in.nextInt();
-                        int defense = inputInt;
-
-
-                        switch (inno){
-                            case "paladin":
-                                player1 = new Paladin(strength, defense);
-                                player1.name = name;
-                                break;
-                            case "rogue":
-                                player1 = new Rogue(strength, defense);
-                                player1.name = name;
-                                break;
-                            case "mage":
-                                player1 = new Mage(strength, defense);
-                                player1.name = name;
-                                break;
-                            default:
-                                player1 = new Character(strength, defense);
-                                player2.name = name;
-                                break;
-                        }
-                        System.out.println("Player1 set to "+ player1.className + "\n");
-
-
-                        System.out.print("game-custom-p2 name> ");
-                        in = new Scanner(System.in);
-                        input = in.nextLine();
-                        name = input;
-
-                        System.out.println("\nClasses: Fighter(Default), Mage, Paladin, and Rogue\n");
-                        System.out.print("game-custom-p2 class> ");
-                        in = new Scanner(System.in);
-                        input = in.nextLine();
-
-                        inno = input.toLowerCase();
-
-                        System.out.println("Enter strength");
-                        System.out.print("game-custom-p2 Str> ");
-                        in = new Scanner(System.in);
-                        inputInt= in.nextInt();
-                        strength = inputInt;
-
-
-                        System.out.print("game-custom-p2 Def> ");
-                        in = new Scanner(System.in);
-                        inputInt = in.nextInt();
-                        defense = inputInt;
-
-                        System.out.println(input);
-                        switch (inno) {
-                            case "paladin":
-                                player2 = new Paladin(strength, defense);
-                                player2.name = name;
-                                break;
-                            case "rogue":
-                                player2 = new Rogue(strength, defense);
-                                player2.name = name;
-                                break;
-                            case "mage":
-                                player2 = new Mage(strength, defense);
-                                player2.name = name;
-                                break;
-                            default:
-                                player2 = new Character(strength, defense);
-                                player2.name = name;
-                                break;
-                        }
-                        System.out.println("Player2 set to "+ player2.className);
-
-                        System.out.println("\nCustom Characters ready.");
-                    }
+                    customize.custom();
 
                 } else if (input.equalsIgnoreCase("play")) {
 
