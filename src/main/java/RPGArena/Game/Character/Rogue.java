@@ -16,6 +16,7 @@ public class Rogue extends Character {
 
     public int dexterity = 25;
 
+    @SuppressWarnings("unused")
     public Rogue(){
 
     }
