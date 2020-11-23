@@ -61,7 +61,9 @@ public class Commands {
                     } else {
                         System.out.println("This command not available in offline mode");
                     }
-                } else {
+                } else if (input.equalsIgnoreCase("discord")){
+                    System.out.println("Discord Server: https://discord.gg/ndG8bh73sy");
+                }else {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
                             "\nGame - Starts game.\nbot - starts bot\nshutdown - End this test peacefully.");
