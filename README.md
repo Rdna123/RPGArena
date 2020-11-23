@@ -11,4 +11,4 @@ Basic Classes for a text RPG with some presets
 
 Used JDA and discord-rpc java libraries.
 
-Discord: https://discord.gg/ndG8bh73sy
+My development [![Discord](https://img.shields.io/discord/780295200534429756?logo=discord)](https://discord.gg/ndG8bh73sy)
