@@ -17,6 +17,7 @@ import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
 import javax.security.auth.login.LoginException;
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Commands {
@@ -27,17 +28,30 @@ public class Commands {
 
     private static boolean quit = false;
 
-    public static void main(String[] args) throws LoginException {
+    public static void main(String[] args) throws LoginException, ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         mode = true;
+
 
         System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
         System.out.print("mode > ");
         Scanner in = new Scanner(System.in);
 
-        if(in.nextLine().equals(" "))
-            mode = in.nextBoolean();
 
-        System.out.println(mode);
+
+
+        while (true) {
+            if (login(in.next())) {
+                break;
+            } else {
+                System.out.println("Please enter valid word\n" +
+                        "Mode Enter 'true' for online mode or 'false' for offline \ndefault is 'true'");
+                System.out.print("mode > ");
+                in = new Scanner(System.in);
+            }
+        }
+
+//        System.out.println("meh"+in);
+//        System.out.println(mode);
 
         if (mode)
             initDiscord();
@@ -88,7 +102,19 @@ public class Commands {
             }
         }
     }
-        private static void initDiscord(){
+
+    private static boolean login(String obj) {
+        if (obj.equalsIgnoreCase("true") || obj.equalsIgnoreCase("t") ){
+            mode = true;
+            return true;
+        } else if (obj.equalsIgnoreCase("false") || obj.equalsIgnoreCase("f")){
+            mode = false;
+            return true;
+        }else {
+            return  false;
+        }
+    }
+    private static void initDiscord(){
             DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
                 ready = true;
                 System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");

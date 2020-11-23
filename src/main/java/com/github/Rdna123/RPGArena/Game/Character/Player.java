@@ -35,7 +35,7 @@ public class Player {
     }
 
     public Player(int str, int def) {
-        this.name = nameList[(int)( Math.random() * 10000)];
+        this.name = nameList[(int)( Math.random() * 6)];
         this.className = "Fighter ";
         this.wins = 0;
         this.strength = str;

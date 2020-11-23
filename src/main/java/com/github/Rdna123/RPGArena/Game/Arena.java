@@ -15,18 +15,40 @@ import com.github.Rdna123.RPGArena.Game.Character.Player;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.Scanner;
 
 public class Arena {
 
+
+
     private static DiscordRichPresence.Builder presence;
     public static boolean blank = true;
 
+    public static boolean running = true;
     public static Player player1, player2;
-    public static void arena() {
+    public static void arena() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+        JFrame frame = new JFrame("Test");
+        JLabel text = new JLabel("Now goto Discord and set your active game to: '" + frame.getTitle() + "'");
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+
+        frame.getContentPane().setLayout(new FlowLayout());
+        frame.getContentPane().setBackground(new Color(106, 239, 161));
+        frame.getContentPane().add(text, SwingConstants.CENTER);
+
+        frame.setResizable(true);
+        frame.setSize(width/4, height/4);
+        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+
+        frame.setVisible(true);
 
 
-        boolean running = true;
 
         player1 = new Player(0, 2);
         player2 = new Player(0, 2);
@@ -108,9 +130,8 @@ public class Arena {
                             "\nplay - play game.\ncustom - make a custom character\nquit - End this test peacefully.");
                     }
             } else {
-//                frame.dispose();
-               // System.exit(0);
-                running=false;
+               frame.dispose();
+               running=false;
             }
         }
     }
