@@ -12,9 +12,6 @@ package RPGArena.Game;
 
 import RPGArena.Commands;
 import RPGArena.Game.Character.Character;
-import RPGArena.Game.Character.Mage;
-import RPGArena.Game.Character.Paladin;
-import RPGArena.Game.Character.Rogue;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
@@ -114,7 +111,8 @@ public class Arena {
                     }
             } else {
 //                frame.dispose();
-                System.exit(0);
+               // System.exit(0);
+                running=false;
             }
         }
     }
