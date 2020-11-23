@@ -1,0 +1,11 @@
+Workflow:
+  -./
+
+Bot:
+  -src/main/java/RPGArena/Bot/*
+
+Game:
+  -src/main/java/RPGArena/Game/*
+
+Commands:
+  -src/main/java/RPGArena/*
