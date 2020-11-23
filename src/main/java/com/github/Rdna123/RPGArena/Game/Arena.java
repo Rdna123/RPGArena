@@ -8,13 +8,13 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package RPGArena.Game;
+package com.github.Rdna123.RPGArena.Game;
 
-import RPGArena.Commands;
-import RPGArena.Game.Character.Character;
+import com.github.Rdna123.RPGArena.Commands;
+import com.github.Rdna123.RPGArena.Game.Character.Character;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
-
+import customize.custom;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -48,7 +48,7 @@ public class Arena {
                 DiscordRPC.discordRunCallbacks();
 
                 presence = new DiscordRichPresence.Builder("Winning: ");
-                presence.setBigImage("large", "RPGArena");
+                presence.setBigImage("large", "com/github/Rdna123/RPGArena");
                 presence.setDetails("Idle");
                 DiscordRPC.discordUpdatePresence(presence.build());
 
