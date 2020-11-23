@@ -66,7 +66,8 @@ public class Commands {
                 }else {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
-                            "\nGame - Starts game.\nbot - starts bot\nshutdown - End this test peacefully.");
+                            "\nGame - Starts game.\nbot - starts bot\ndiscord - The official discord server" +
+                            "\nshutdown - End this test peacefully.");
                 }
             } else {
                 quit = true;

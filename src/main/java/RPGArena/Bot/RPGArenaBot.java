@@ -8,7 +8,6 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import org.apache.commons.lang3.time.StopWatch;
 
 import javax.security.auth.login.LoginException;
 import java.io.File;
@@ -28,7 +27,7 @@ public class RPGArenaBot extends ListenerAdapter{
             }
             myReader.close();
         } catch (FileNotFoundException e) {
-            System.out.println("An error occurred.");
+            System.out.println("File not found.");
             e.printStackTrace();
         }
     }
