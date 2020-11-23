@@ -10,7 +10,6 @@
 
 package com.github.Rdna123.RPGArena.Game.Character;
 
-import com.github.Rdna123.RPGArena.Game.Arena;
 
 /**
  * Base class for character types.

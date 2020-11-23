@@ -27,6 +27,7 @@ public class Paladin extends Player {
         this.health = 100-1;
     }
 
+    @Override
     public int takeDamage(int damage) {
         boolean Block = (int) (Math.random() * 10000) >= Inspiration - this.health;
         Inspiration = (int) (Math.random() * 10000);

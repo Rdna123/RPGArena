@@ -11,7 +11,6 @@
 package com.github.Rdna123.RPGArena.Game.Character;
 
 
-import com.github.Rdna123.RPGArena.Game.Arena;
 
 public class Mage extends Player {
     public int magic;
@@ -30,9 +29,10 @@ public class Mage extends Player {
         this.strength = str - 1;
         this.defense = def - 1;
         this.health = 100 - 1;
-        this.intelligence = (int)((Math.random() * 10000));
+        this.intelligence = (int)(Math.random() * 10000);
     }
 
+    @Override
     public int attack(Player target) {
         int damage = 0;
         boolean accuracy = (int) (Math.random() * 10000) < 90;
