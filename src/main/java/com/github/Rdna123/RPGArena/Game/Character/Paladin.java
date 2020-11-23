@@ -10,11 +10,11 @@
 
 package com.github.Rdna123.RPGArena.Game.Character;
 
-import com.github.Rdna123.RPGArena.Game.Arena;
 
 public class Paladin extends Player {
     public int Inspiration;
 
+    @SuppressWarnings("unused")
     public Paladin(){
 
     }

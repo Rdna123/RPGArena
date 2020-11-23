@@ -50,7 +50,7 @@ public class Commands {
                 if (!ready)
                     continue;
 
-
+                @SuppressWarnings("Spelling")
                 DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("");
                 presence.setBigImage("large", "com/github/Rdna123/RPGArena");
                 presence.setDetails("Starting");

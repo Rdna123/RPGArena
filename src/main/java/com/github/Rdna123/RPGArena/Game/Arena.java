@@ -15,14 +15,11 @@ import com.github.Rdna123.RPGArena.Game.Character.Player;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Arena {
 
     private static DiscordRichPresence.Builder presence;
-//    public static Random generator = new Random();
-    public static Math generator;
     public static boolean blank = true;
 
     public static Player player1, player2;
