@@ -15,7 +15,7 @@ import com.github.Rdna123.RPGArena.Game.Arena;
 /**
  * Base class for character types.
  */
-public class Character {
+public class Player {
 
     public String name;
     public String className;
@@ -31,12 +31,12 @@ public class Character {
     /**
      * Blank Constructor used for custom characters.
      */
-    public Character(){
+    public Player(){
 
     }
 
-    public Character(int str, int def) {
-        this.name = nameList[Arena.generator.nextInt(nameList.length)];
+    public Player(int str, int def) {
+        this.name = nameList[(int)( Math.random() * 10000)];
         this.className = "Fighter ";
         this.wins = 0;
         this.strength = str;
@@ -55,7 +55,7 @@ public class Character {
         return 0;
     }
 
-    public int attack(Character target) {
+    public int attack(Player target) {
         int damage = this.strength * 2;
         return target.takeDamage(damage);
     }

@@ -34,7 +34,8 @@ public class Commands {
         System.out.print("mode > ");
         Scanner in = new Scanner(System.in);
 
-        mode = in.nextBoolean();
+        if(in.nextLine().equals(" "))
+            mode = in.nextBoolean();
 
         System.out.println(mode);
 

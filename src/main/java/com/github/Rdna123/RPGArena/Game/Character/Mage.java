@@ -13,7 +13,7 @@ package com.github.Rdna123.RPGArena.Game.Character;
 
 import com.github.Rdna123.RPGArena.Game.Arena;
 
-public class Mage extends Character {
+public class Mage extends Player {
     public int magic;
     public int intelligence;
 
@@ -30,13 +30,13 @@ public class Mage extends Character {
         this.strength = str - 1;
         this.defense = def - 1;
         this.health = 100 - 1;
-        this.intelligence = Arena.generator.nextInt(1000);
+        this.intelligence = (int)((Math.random() * 10000));
     }
 
-    public int attack(Character target) {
+    public int attack(Player target) {
         int damage = 0;
-        boolean accuracy = Arena.generator.nextInt(200) < 90;
-        boolean overPower = Arena.generator.nextInt(1000) < 30;
+        boolean accuracy = (int) (Math.random() * 10000) < 90;
+        boolean overPower = (int) (Math.random() * 10000) < 30;
         if (this.magic >= this.health + 7) {
             if (accuracy) {
                 if (overPower) {
@@ -47,7 +47,7 @@ public class Mage extends Character {
                     System.out.println("**Magic Cast**");
                 }
             } else {
-                damage = (this.strength);
+                damage = this.strength;
                 magic += 15;
             }
 

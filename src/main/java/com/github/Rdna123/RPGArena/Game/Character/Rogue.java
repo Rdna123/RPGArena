@@ -12,7 +12,7 @@ package com.github.Rdna123.RPGArena.Game.Character;
 
 import com.github.Rdna123.RPGArena.Game.Arena;
 
-public class Rogue extends Character {
+public class Rogue extends Player {
 
     public int dexterity = 25;
 
@@ -29,8 +29,8 @@ public class Rogue extends Character {
         this.health = 100-12;
     }
 
-    public int attack(Character target){
-        boolean criticalHit = Arena.generator.nextInt(1000) < dexterity;
+    public int attack(Player target){
+        boolean criticalHit = (int) (Math.random() * 10000) < dexterity;
         int damage = this.strength * 2;
         if(criticalHit){
             damage *= 3;

@@ -11,7 +11,7 @@
 package com.github.Rdna123.RPGArena.Game;
 
 import com.github.Rdna123.RPGArena.Commands;
-import com.github.Rdna123.RPGArena.Game.Character.Character;
+import com.github.Rdna123.RPGArena.Game.Character.Player;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
@@ -21,17 +21,18 @@ import java.util.Scanner;
 public class Arena {
 
     private static DiscordRichPresence.Builder presence;
-    public static Random generator = new Random();
+//    public static Random generator = new Random();
+    public static Math generator;
     public static boolean blank = true;
 
-    public static Character player1, player2;
+    public static Player player1, player2;
     public static void arena() {
 
 
         boolean running = true;
 
-        player1 = new Character(0, 2);
-        player2 = new Character(0, 2);
+        player1 = new Player(0, 2);
+        player2 = new Player(0, 2);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
 //        player1.health = 50;
@@ -66,8 +67,8 @@ public class Arena {
                 } else if (input.equalsIgnoreCase("play")) {
 
                     if (blank){
-                        player1 = new Character(12, 10);
-                        player2 = new Character(5, 10);
+                        player1 = new Player(12, 10);
+                        player2 = new Player(5, 10);
                     }
 
                     System.out.println(player1.className + player1.name + " vs. " + player2.className + player2.name);

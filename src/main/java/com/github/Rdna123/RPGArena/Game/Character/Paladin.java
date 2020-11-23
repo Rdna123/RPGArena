@@ -12,7 +12,7 @@ package com.github.Rdna123.RPGArena.Game.Character;
 
 import com.github.Rdna123.RPGArena.Game.Arena;
 
-public class Paladin extends Character {
+public class Paladin extends Player {
     public int Inspiration;
 
     public Paladin(){
@@ -28,8 +28,8 @@ public class Paladin extends Character {
     }
 
     public int takeDamage(int damage) {
-        boolean Block = Arena.generator.nextInt(1000) >= Inspiration - this.health;
-        Inspiration = Arena.generator.nextInt(1000);
+        boolean Block = (int) (Math.random() * 10000) >= Inspiration - this.health;
+        Inspiration = (int) (Math.random() * 10000);
         if (Block){
             System.out.println(this.name + " receives half damage");
             int damageTaken = (damage - this.defense)/2;

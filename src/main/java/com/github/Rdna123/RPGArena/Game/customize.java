@@ -13,7 +13,7 @@ package com.github.Rdna123.RPGArena.Game;
 import com.github.Rdna123.RPGArena.Game.Character.Mage;
 import com.github.Rdna123.RPGArena.Game.Character.Paladin;
 import com.github.Rdna123.RPGArena.Game.Character.Rogue;
-import com.github.Rdna123.RPGArena.Game.Character.Character;
+import com.github.Rdna123.RPGArena.Game.Character.Player;
 import java.util.Scanner;
 
 import static com.github.Rdna123.RPGArena.Game.Arena.player1;
@@ -63,7 +63,7 @@ public class customize {
                     player1.name = name;
                     break;
                 default:
-                    player1 = new Character(strength, defense);
+                    player1 = new Player(strength, defense);
                     player1.name = name;
                     break;
             }
@@ -109,7 +109,7 @@ public class customize {
                     player2.name = name;
                     break;
                 default:
-                    player2 = new Character(strength, defense);
+                    player2 = new Player(strength, defense);
                     player2.name = name;
                     break;
             }
