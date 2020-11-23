@@ -17,7 +17,10 @@ jobs:
     - uses: actions/labeler@v2
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
-            
+        
+        Workflow:
+          -./
+        
         Bot:
           -src/main/java/RPGArena/Bot/*
            
