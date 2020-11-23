@@ -22,14 +22,14 @@
             <id>jcenter</id>
             <url>https://jcenter.bintray.com/</url>
         </repository>
+
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20200518</version>
-        </dependency>
 
         <dependency>
             <groupId>ch.qos.logback</groupId>
@@ -43,11 +43,17 @@
             <version>3.7</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/net.dv8tion/JDA -->
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.0_219</version>
+            <version>4.2.0_218</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.Vatuu</groupId>
+            <artifactId>discord-rpc</artifactId>
+            <version>1.6.2</version>
         </dependency>
 
 
