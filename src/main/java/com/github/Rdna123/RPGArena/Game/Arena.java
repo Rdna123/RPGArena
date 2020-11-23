@@ -14,7 +14,7 @@ import com.github.Rdna123.RPGArena.Commands;
 import com.github.Rdna123.RPGArena.Game.Character.Character;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
-import customize.custom;
+
 import java.util.Random;
 import java.util.Scanner;
 
