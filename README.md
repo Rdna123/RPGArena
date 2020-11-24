@@ -7,7 +7,7 @@
     <a href="https://www.codefactor.io/repository/github/rdna123/rpgarena/overview/main"><img src="https://www.codefactor.io/repository/github/rdna123/rpgarena/badge/main" alt="CodeFactor" /></a>
 </p>
 
-[![](https://jitpack.io/v/Rdna123/RPGArena.svg)](https://jitpack.io/#Rdna123/RPGArena)
+[![](https://jitpack.io/v/Rdna123/RPGArena.svg)](https://jitpack.io/#Rdna123/RPGArena) [![Gitter](https://badges.gitter.im/RPGArena/community.svg)](https://gitter.im/RPGArena/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Basic Classes for a text RPG with some presets
 
