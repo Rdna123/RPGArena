@@ -16,6 +16,7 @@ public class Mage extends Player {
     public int magic;
     public int intelligence;
 
+    @SuppressWarnings("unused")
     public Mage(){
 
     }

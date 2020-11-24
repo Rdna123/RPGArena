@@ -32,26 +32,8 @@ public class Commands {
         mode = true;
 
 
-        System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
-        System.out.print("mode > ");
-        Scanner in = new Scanner(System.in);
+        login();
 
-
-
-
-        while (true) {
-            if (login(in.next())) {
-                break;
-            } else {
-                System.out.println("Please enter valid word\n" +
-                        "Mode Enter 'true' for online mode or 'false' for offline \ndefault is 'true'");
-                System.out.print("mode > ");
-                in = new Scanner(System.in);
-            }
-        }
-
-//        System.out.println("meh"+in);
-//        System.out.println(mode);
 
         if (mode)
             initDiscord();
@@ -64,7 +46,6 @@ public class Commands {
                 if (!ready)
                     continue;
 
-                @SuppressWarnings("Spelling")
                 DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("");
                 presence.setBigImage("large", "com/github/Rdna123/RPGArena");
                 presence.setDetails("Starting");
@@ -74,7 +55,7 @@ public class Commands {
             }
 
             System.out.print("Main Menu> ");
-            in = new Scanner(System.in);
+            Scanner in = new Scanner(System.in);
             String input = in.nextLine();
 
             if (!input.equalsIgnoreCase("shutdown")) {
@@ -82,16 +63,26 @@ public class Commands {
                     Arena.arena();
                 } else if (input.equalsIgnoreCase("bot")) {
                     if (mode) {
+
                         RPGArenaBot.botStart();
+
                     } else {
+
                         System.out.println("This command not available in offline mode");
                     }
                 } else if (input.equalsIgnoreCase("discord")){
+
                     System.out.println("Discord Server: https://discord.gg/ndG8bh73sy");
-                }else {
+
+                }else if (input.equalsIgnoreCase("mode")){
+
+                    login();
+
+                } else {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
                             "\nGame - Starts game.\nbot - starts bot\ndiscord - The official discord server" +
+                            "\nmode - Allows Change of game mode" +
                             "\nshutdown - End this test peacefully.");
                 }
             } else {
@@ -103,17 +94,32 @@ public class Commands {
         }
     }
 
-    private static boolean login(String obj) {
-        if (obj.equalsIgnoreCase("true") || obj.equalsIgnoreCase("t") ){
-            mode = true;
-            return true;
-        } else if (obj.equalsIgnoreCase("false") || obj.equalsIgnoreCase("f")){
-            mode = false;
-            return true;
-        }else {
-            return  false;
+    public static void login() {
+
+        System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
+        System.out.print("mode > ");
+        Scanner in = new Scanner(System.in);
+
+        String obj = in.next();
+        while (true) {
+            if (obj.equalsIgnoreCase("true") || obj.equalsIgnoreCase("t") ){
+                mode = true;
+                break;
+            } else if (obj.equalsIgnoreCase("false") || obj.equalsIgnoreCase("f")){
+                if (mode){
+                    DiscordRPC.discordShutdown();}
+                mode = false;
+                break;
+            } else {
+                System.out.println("Please enter valid word\n" +
+                        "Mode Enter 'true' for online mode or 'false' for offline \ndefault is 'true'");
+                System.out.print("mode > ");
+                in = new Scanner(System.in);
+                obj = in.next();
+            }
         }
     }
+
     private static void initDiscord(){
             DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
                 ready = true;

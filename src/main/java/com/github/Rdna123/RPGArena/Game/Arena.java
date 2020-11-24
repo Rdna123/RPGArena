@@ -16,7 +16,6 @@ import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.Scanner;
 
 public class Arena {
@@ -28,26 +27,10 @@ public class Arena {
 
     public static boolean running = true;
     public static Player player1, player2;
+
     public static void arena() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
 
-        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-        JFrame frame = new JFrame("Test");
-        JLabel text = new JLabel("Now goto Discord and set your active game to: '" + frame.getTitle() + "'");
-        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int width = gd.getDisplayMode().getWidth();
-        int height = gd.getDisplayMode().getHeight();
-
-        frame.getContentPane().setLayout(new FlowLayout());
-        frame.getContentPane().setBackground(new Color(106, 239, 161));
-        frame.getContentPane().add(text, SwingConstants.CENTER);
-
-        frame.setResizable(true);
-        frame.setSize(width/4, height/4);
-        frame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-
-        frame.setVisible(true);
-
+        graphics.game();
 
 
         player1 = new Player(0, 2);
@@ -130,7 +113,7 @@ public class Arena {
                             "\nplay - play game.\ncustom - make a custom character\nquit - End this test peacefully.");
                     }
             } else {
-               frame.dispose();
+               graphics.frame.dispose();
                running=false;
             }
         }
