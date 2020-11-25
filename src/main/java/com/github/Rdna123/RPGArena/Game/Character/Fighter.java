@@ -11,54 +11,55 @@
 package com.github.Rdna123.RPGArena.Game.Character;
 
 
+/**
+ * Base class for character types.
+ */
+public class Fighter extends Player {
 
-public class Mage extends Player {
-    public int magic;
-    public int intelligence = (int)(Math.random() * 10000);
+    public String name;
+    public String className;
+    public int strength;
+    public int health;
+    public int defense;
 
-    private int defense;
+    public int wins;
 
-    private int strength;
+    @SuppressWarnings("SpellCheckingInspection")
+    public static String[] nameList = {"Geoff", "Steve", "Krogar", "Dave", "Keith", "Deven"};
 
-    private  int health;
+    /**
+     * Blank Constructor used for custom characters.
+     */
 
-    public Mage(int str, int def) {
+    public Fighter(int str, int def) {
         super(str, def);
-        String cName = "Mage ";
-        setClassName(cName);
+        this.name = nameList[(int)( Math.random() * 6)];
+        this.className = "Fighter ";
+        this.wins = 0;
         this.strength = str;
-        setStrength(str - 1);
-        this.health = 99;
-        setHealth(this.health);
         this.defense = def;
-        setDefense(def-1);
+        this.health = 100;
     }
 
+    @Override
+    public int takeDamage(int damage) {
+        int damageTaken = damage - this.defense;
+        if(damageTaken > 0){
+            this.health -= damageTaken;
+            return damageTaken;
+        } else if (damageTaken<0){
+            return 0;
+        }
+        return 0;
+    }
 
     @Override
     public int attack(Player target) {
-        int damage = 0;
-        boolean accuracy = (int) (Math.random() * 10000) < 90;
-        boolean overPower = (int) (Math.random() * 10000) < 30;
-        if (this.magic >= this.health + 7) {
-            if (accuracy) {
-                if (overPower) {
-                    damage = ((this.health*100)+ (this.magic*100));
-                    this.health = this.health/2;
-                } else {
-                    damage = ((this.health / 3) + (this.strength / 5) + (this.magic - this.health + 6) + (intelligence / 10));
-                    System.out.println("**Magic Cast**");
-                }
-            } else {
-                damage = this.strength;
-                magic += 15;
-            }
-
-        }return target.takeDamage(damage);
+        int damage = this.strength * 2;
+        return target.takeDamage(damage);
+    }
+    public boolean isAlive(){
+        return this.health > 0;
     }
 
-    @Override
-    public int getDefense() {
-        return defense;
-    }
 }

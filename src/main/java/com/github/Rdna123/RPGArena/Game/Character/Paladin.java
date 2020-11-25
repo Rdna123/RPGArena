@@ -11,16 +11,13 @@
 package com.github.Rdna123.RPGArena.Game.Character;
 
 
-public class Paladin extends Player {
+public class Paladin extends Fighter {
     public int Inspiration;
 
     @SuppressWarnings("unused")
-    public Paladin(){
-
-    }
 
     public Paladin(int str, int def){
-        super();
+        super(str, def);
         this.className = "Paladin ";
         this.strength = str-4;
         this.defense = def+2;
