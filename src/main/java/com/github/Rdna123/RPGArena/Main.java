@@ -18,7 +18,7 @@ import net.arikia.dev.drpc.DiscordRichPresence;
 import javax.swing.*;
 import java.util.Scanner;
 
-public class Commands {
+public class Main{
 
     public static boolean mode = true;
 
@@ -26,16 +26,13 @@ public class Commands {
 
     private static boolean quit = false;
 
+    public static String command;
+
     public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         mode = true;
 
 
         login();
-
-
-        if (mode)
-            initDiscord();
-
 
 
         while (!quit) {
@@ -56,15 +53,20 @@ public class Commands {
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
 
-            if (!input.equalsIgnoreCase("shutdown")) {
-                if (input.equalsIgnoreCase("game")) {
+            command = input.replaceAll(" ", "").toLowerCase();
+
+            if (!command.equals("shutdown")) {
+                if (command.equals("s")){
+                    end();
+
+                }else if (command.equals("game") || command.equals("g")) {
                     Arena.arena();
 
-                } else if (input.equalsIgnoreCase("discord")){
+                } else if (command.equals("discord") || input.equals("d")){
 
                     System.out.println("Discord Server: https://discord.gg/ndG8bh73sy");
 
-                }else if (input.equalsIgnoreCase("mode")){
+                }else if (command.equals("mode") || command.equals("m")){
 
                     login();
 
@@ -76,10 +78,7 @@ public class Commands {
                             "\nshutdown - End this test peacefully.");
                 }
             } else {
-                quit = true;
-                if (mode){
-                    DiscordRPC.discordShutdown();}
-                System.exit(0);
+                end();
             }
         }
     }
@@ -90,14 +89,23 @@ public class Commands {
         System.out.print("mode > ");
         Scanner in = new Scanner(System.in);
 
-        String obj = in.next();
+        Main.command  = in.nextLine();
+
+        command = command.replaceAll("\\s", "").toLowerCase();
+
+        String obj = command;
+
         while (true) {
-            if (obj.equalsIgnoreCase("true") || obj.equalsIgnoreCase("t") ){
+            if (obj.equals("true") || obj.equals("t")){
                 mode = true;
                 break;
-            } else if (obj.equalsIgnoreCase("false") || obj.equalsIgnoreCase("f")){
+            } else if (obj.isEmpty()){
+                mode = true;
+                break;
+            } else if (obj.equals("false") || obj.equals("f")){
                 if (mode){
-                    DiscordRPC.discordShutdown();}
+                    DiscordRPC.discordShutdown();
+                }
                 mode = false;
                 break;
             } else {
@@ -108,6 +116,16 @@ public class Commands {
                 obj = in.next();
             }
         }
+        if (mode) {
+            initDiscord();
+        }
+    }
+
+    private  static void end(){
+        quit = true;
+        if (mode){
+            DiscordRPC.discordShutdown();}
+        System.exit(0);
     }
 
     private static void initDiscord(){

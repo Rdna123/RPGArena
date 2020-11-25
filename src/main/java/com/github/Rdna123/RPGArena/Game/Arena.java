@@ -10,7 +10,7 @@
 
 package com.github.Rdna123.RPGArena.Game;
 
-import com.github.Rdna123.RPGArena.Commands;
+import com.github.Rdna123.RPGArena.Main;
 import com.github.Rdna123.RPGArena.Game.Character.Player;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
@@ -47,7 +47,7 @@ public class Arena {
 
         while (running) {
 
-            if (Commands.mode) {
+            if (Main.mode) {
                 DiscordRPC.discordRunCallbacks();
 
                 presence = new DiscordRichPresence.Builder("Winning: ");
@@ -61,12 +61,14 @@ public class Arena {
             Scanner in = new Scanner(System.in);
             String input = in.nextLine();
 
-            if (!input.equalsIgnoreCase("quit")) {
-                if(input.equalsIgnoreCase("custom")){
+            Main.command = input.replaceAll("\\s", "").toLowerCase();
+
+            if (!Main.command.equals("quit")) {
+                if(Main.command.equals("custom")){
 
                     customize.custom();
 
-                } else if (input.equalsIgnoreCase("play")) {
+                } else if (Main.command.equals("play")) {
 
                     if (blank){
                         player1 = new Player(12, 10);
@@ -76,7 +78,7 @@ public class Arena {
                     System.out.println(player1.className + player1.name + " vs. " + player2.className + player2.name);
                     System.out.println(player1.health + " vs. " + player2.health + "\n");
 
-                    if (Commands.mode) {
+                    if (Main.mode) {
                         DiscordRPC.discordRunCallbacks();
                         presence.setDetails("Playing RPGArena");
                         DiscordRPC.discordUpdatePresence(presence.build());
