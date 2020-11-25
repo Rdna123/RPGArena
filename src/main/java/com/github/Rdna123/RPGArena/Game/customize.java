@@ -13,11 +13,11 @@ package com.github.Rdna123.RPGArena.Game;
 import com.github.Rdna123.RPGArena.Game.Character.Mage;
 import com.github.Rdna123.RPGArena.Game.Character.Paladin;
 import com.github.Rdna123.RPGArena.Game.Character.Rogue;
-import com.github.Rdna123.RPGArena.Game.Character.Player;
+import com.github.Rdna123.RPGArena.Game.Character.Fighter;
 import java.util.Scanner;
 
-import static com.github.Rdna123.RPGArena.Game.Arena.player1;
-import static com.github.Rdna123.RPGArena.Game.Arena.player2;
+import static com.github.Rdna123.RPGArena.Game.Arena.fighter1;
+import static com.github.Rdna123.RPGArena.Game.Arena.fighter2;
 public class customize {
     public static void custom() {
         Arena.blank = false;
@@ -51,23 +51,23 @@ public class customize {
 
             switch (inno){
                 case "paladin":
-                    player1 = new Paladin(strength, defense);
-                    player1.name = name;
+                    fighter1 = new Paladin(strength, defense);
+                    fighter1.setName(name);
                     break;
                 case "rogue":
-                    player1 = new Rogue(strength, defense);
-                    player1.name = name;
+                    fighter1 = new Rogue(strength, defense);
+                    fighter1.setName(name);
                     break;
                 case "mage":
-                    player1 = new Mage(strength, defense);
-                    player1.name = name;
+                    fighter1 = new Mage(strength, defense);
+                    fighter1.setName(name);
                     break;
                 default:
-                    player1 = new Player(strength, defense);
-                    player1.name = name;
+                    fighter1 = new Fighter(strength, defense);
+                    fighter1.setName(name);
                     break;
             }
-            System.out.println("Player1 set to "+ player1.className + "\n");
+            System.out.println("Player1 set to "+ fighter1.getClassName() + "\n");
 
 
             System.out.print("game-custom-p2 name> ");
@@ -94,26 +94,26 @@ public class customize {
             inputInt = in.nextInt();
             defense = inputInt;
 
-            System.out.println(input);
+
             switch (inno) {
                 case "paladin":
-                    player2 = new Paladin(strength, defense);
-                    player2.name = name;
+                    fighter2 = new Paladin(strength, defense);
+                    fighter2.setName(name);
                     break;
                 case "rogue":
-                    player2 = new Rogue(strength, defense);
-                    player2.name = name;
+                    fighter2 = new Rogue(strength, defense);
+                    fighter2.setName(name);
                     break;
                 case "mage":
-                    player2 = new Mage(strength, defense);
-                    player2.name = name;
+                    fighter2 = new Mage(strength, defense);
+                    fighter2.setName(name);
                     break;
                 default:
-                    player2 = new Player(strength, defense);
-                    player2.name = name;
+                    fighter2 = new Fighter(strength, defense);
+                    fighter2.setName(name);
                     break;
             }
-            System.out.println("Player2 set to "+ player2.className);
+            System.out.println("Player2 set to "+ fighter2.getClassName());
 
             System.out.println("\nCustom Characters ready.");
         }

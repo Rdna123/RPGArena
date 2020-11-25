@@ -11,18 +11,16 @@
 package com.github.Rdna123.RPGArena.Game.Character;
 
 
-/**
- * Base class for character types.
- */
-public class Player {
+public abstract class Player{
+    public String className;
 
     public String name;
-    public String className;
-    public int strength;
-    public int health;
-    public int defense;
 
-    public int wins;
+    private int strength;
+    public int health = getHealth();
+    private int defense;
+
+    private int wins;
 
     @SuppressWarnings("SpellCheckingInspection")
     public static String[] nameList = {"Geoff", "Steve", "Krogar", "Dave", "Keith", "Deven"};
@@ -30,36 +28,84 @@ public class Player {
     /**
      * Blank Constructor used for custom characters.
      */
-    public Player(){
 
-    }
 
     public Player(int str, int def) {
-        this.name = nameList[(int)( Math.random() * 6)];
-        this.className = "Fighter ";
-        this.wins = 0;
-        this.strength = str;
-        this.defense = def;
-        this.health = 100;
+            this.name = nameList[(int)( Math.random() * 6)];
+            this.wins = 0;
+            this.strength = str;
+            this.defense = def;
     }
 
     public int takeDamage(int damage) {
-        int damageTaken = damage - this.defense;
-        if(damageTaken > 0){
+            int damageTaken = damage - getDefense();
+            if(damageTaken > 0){
             this.health -= damageTaken;
             return damageTaken;
-        } else if (damageTaken<0){
+            } else if (damageTaken<0){
             return 0;
-        }
-        return 0;
-    }
+            }
+            return 0;
+            }
 
     public int attack(Player target) {
-        int damage = this.strength * 2;
-        return target.takeDamage(damage);
-    }
+            int damage = getStrength();
+            return target.takeDamage(damage);
+            }
+
     public boolean isAlive(){
-        return this.health > 0;
+            return this.health > 0;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public void setDefense(int defense) {
+        this.defense = defense;
+    }
+
+    @Deprecated
+    public int getWins() {
+        return wins;
+    }
+
+    @Deprecated
+    public void setWins(int wins) {
+        this.wins = wins;
     }
 
 }

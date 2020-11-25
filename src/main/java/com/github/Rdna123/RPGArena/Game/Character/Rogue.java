@@ -14,15 +14,12 @@ package com.github.Rdna123.RPGArena.Game.Character;
 
 public class Rogue extends Player {
 
+    private final int defense;
+    private final int strength;
     public int dexterity = 25;
 
-    @SuppressWarnings("unused")
-    public Rogue(){
-
-    }
-
     public Rogue(int str, int def){
-        super();
+        super(str, def);
         this.className = "Rogue ";
         this.strength = str-1;
         this.defense = def-1;

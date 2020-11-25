@@ -10,8 +10,9 @@
 
 package com.github.Rdna123.RPGArena.Game;
 
-import com.github.Rdna123.RPGArena.Main;
 import com.github.Rdna123.RPGArena.Game.Character.Player;
+import com.github.Rdna123.RPGArena.Main;
+import com.github.Rdna123.RPGArena.Game.Character.Fighter;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
@@ -25,16 +26,17 @@ public class Arena {
     private static DiscordRichPresence.Builder presence;
     public static boolean blank = true;
 
-    public static boolean running = true;
-    public static Player player1, player2;
+    public static boolean running;
+    public static Player fighter1, fighter2;
 
     public static void arena() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+        running = true;
 
         graphics.game();
 
 
-        player1 = new Player(0, 2);
-        player2 = new Player(0, 2);
+        fighter1 = new Fighter(0, 2);
+        fighter2 = new Fighter(0, 2);
 //        player1.name = "Billy Bob";
 //        player1.strength = 2;
 //        player1.health = 50;
@@ -71,12 +73,12 @@ public class Arena {
                 } else if (Main.command.equals("play")) {
 
                     if (blank){
-                        player1 = new Player(12, 10);
-                        player2 = new Player(5, 10);
+                        fighter1 = new Fighter(12, 10);
+                        fighter2 = new Fighter(5, 10);
                     }
 
-                    System.out.println(player1.className + player1.name + " vs. " + player2.className + player2.name);
-                    System.out.println(player1.health + " vs. " + player2.health + "\n");
+                    System.out.println(fighter1.getClassName() + fighter1.getName() + " vs. " + fighter2.className + fighter2.name);
+                    System.out.println(fighter1.getHealth() + " vs. " + fighter2.getHealth() + "\n");
 
                     if (Main.mode) {
                         DiscordRPC.discordRunCallbacks();
@@ -84,28 +86,28 @@ public class Arena {
                         DiscordRPC.discordUpdatePresence(presence.build());
                     }
 
-                    while (player1.isAlive() && player2.isAlive()) {
+                    while (fighter1.isAlive() && fighter2.isAlive()) {
 
-                        System.out.println(player1.name + ": " + player1.health);
-                        System.out.println(player2.name + ": " + player2.health + "\n\n");
+                        System.out.println(fighter1.name + ": " + fighter1.health);
+                        System.out.println(fighter2.name + ": " + fighter2.health + "\n\n");
 
                         int damage;
-                        damage = player1.attack(player2);
-                        System.out.println(player1.name + " hits " + player2.name + " for " + damage);
+                        damage = fighter1.attack(fighter2);
+                        System.out.println(fighter1.getName() + " hits " + fighter2.getName() + " for " + damage);
 
 
-                        damage = player2.attack(player1);
-                        System.out.println(player2.name + " hits " + player1.name + " for " + damage + "\n");
+                        damage = fighter2.attack(fighter1);
+                        System.out.println(fighter2.getName() + " hits " + fighter1.getName() + " for " + damage + "\n");
 
-                        if (!player1.isAlive() || !player2.isAlive()){
+                        if (!fighter1.isAlive() || !fighter2.isAlive()){
                             running = false;
                         }
                     }
 
-                    if(player1.isAlive()) {
-                        System.out.println(player1.name + " wins!");
-                    } else if (player2.isAlive()) {
-                        System.out.println(player2.name + " wins!");
+                    if(fighter1.isAlive()) {
+                        System.out.println(fighter1.getName() + " wins!");
+                    } else if (fighter2.isAlive()) {
+                        System.out.println(fighter2.getName() + " wins!");
                     } else {
                         System.out.println("It's a draw!");
                     }
