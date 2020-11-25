@@ -11,17 +11,19 @@
 package com.github.Rdna123.RPGArena.Game.Character;
 
 
-public class Paladin extends Fighter {
-    public int Inspiration;
-
-    @SuppressWarnings("unused")
+public class Paladin extends Player {
+    private final int defense;
+    private int Inspiration;
 
     public Paladin(int str, int def){
         super(str, def);
-        this.className = "Paladin ";
-        this.strength = str-4;
+        setClassName("Paladin ");
+        int strength = str - 4;
+        setStrength(strength);
         this.defense = def+2;
+        setDefense(this.defense);
         this.health = 100-1;
+        setHealth(this.health);
     }
 
     @Override
@@ -46,7 +48,14 @@ public class Paladin extends Fighter {
                 return 0;
             }
         }
-
         return 0;
+    }
+
+    public int getInspiration() {
+        return Inspiration;
+    }
+
+    public void setInspiration(int inspiration) {
+        Inspiration = inspiration;
     }
 }

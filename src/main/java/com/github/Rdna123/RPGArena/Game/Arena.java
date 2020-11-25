@@ -121,6 +121,7 @@ public class Arena {
                running=false;
             }
         }
+        graphics.frame.dispose();
+        running=false;
     }
-
 }
