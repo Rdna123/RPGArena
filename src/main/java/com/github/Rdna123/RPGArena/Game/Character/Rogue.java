@@ -14,27 +14,42 @@ package com.github.Rdna123.RPGArena.Game.Character;
 
 public class Rogue extends Player {
 
-    private final int defense;
     private final int strength;
-    public int dexterity = 25;
+
+    private int dexterity = 25;
+
+    private int defense;
 
     public Rogue(int str, int def){
         super(str, def);
-        this.className = "Rogue ";
+        setClassName("Rogue ");
         this.strength = str-1;
-        this.defense = def-1;
+        setStrength(this.strength);
+        this.defense = def - 1;
+        setDefense(this.defense);
         this.health = 100-12;
+        setHealth(this.health);
     }
+
+
 
     @Override
     public int attack(Player target){
         boolean criticalHit = (int) (Math.random() * 10000) < dexterity;
-        int damage = this.strength * 2;
+        int damage = this.strength;
         if(criticalHit){
             damage *= 3;
             System.out.println("*** Critical Hit ***");
         }
         return target.takeDamage(damage);
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
     }
 
 }

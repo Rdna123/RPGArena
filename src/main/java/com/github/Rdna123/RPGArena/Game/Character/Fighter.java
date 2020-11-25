@@ -16,7 +16,7 @@ package com.github.Rdna123.RPGArena.Game.Character;
  */
 public class Fighter extends Player {
 
-    public String name;
+
     public String className;
     public int strength;
     public int health;
@@ -24,8 +24,6 @@ public class Fighter extends Player {
 
     public int wins;
 
-    @SuppressWarnings("SpellCheckingInspection")
-    public static String[] nameList = {"Geoff", "Steve", "Krogar", "Dave", "Keith", "Deven"};
 
     /**
      * Blank Constructor used for custom characters.
@@ -33,8 +31,7 @@ public class Fighter extends Player {
 
     public Fighter(int str, int def) {
         super(str, def);
-        this.name = nameList[(int)( Math.random() * 6)];
-        this.className = "Fighter ";
+        setClassName("Fighter ");
         this.wins = 0;
         this.strength = str;
         this.defense = def;
@@ -58,6 +55,8 @@ public class Fighter extends Player {
         int damage = this.strength * 2;
         return target.takeDamage(damage);
     }
+
+    @Override
     public boolean isAlive(){
         return this.health > 0;
     }

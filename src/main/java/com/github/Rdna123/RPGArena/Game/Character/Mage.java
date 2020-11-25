@@ -13,52 +13,70 @@ package com.github.Rdna123.RPGArena.Game.Character;
 
 
 public class Mage extends Player {
-    public int magic;
-    public int intelligence = (int)(Math.random() * 10000);
+    private int magic;
+    private final int intelligence = (int)(Math.random() * 10000);
 
-    private int defense;
+    private boolean accuracy;
 
-    private int strength;
+    private boolean overPower;
+
+    private final int strength;
 
     private  int health;
 
+
     public Mage(int str, int def) {
         super(str, def);
-        String cName = "Mage ";
-        setClassName(cName);
+        setClassName("Mage ");
         this.strength = str;
         setStrength(str - 1);
         this.health = 99;
         setHealth(this.health);
-        this.defense = def;
-        setDefense(def-1);
+        setDefense(def);
     }
 
 
     @Override
     public int attack(Player target) {
         int damage = 0;
-        boolean accuracy = (int) (Math.random() * 10000) < 90;
-        boolean overPower = (int) (Math.random() * 10000) < 30;
+        this.accuracy = (int) (Math.random() * 10000) < 90;
+        this.overPower = (int) (Math.random() * 10000) < 30;
         if (this.magic >= this.health + 7) {
             if (accuracy) {
                 if (overPower) {
-                    damage = ((this.health*100)+ (this.magic*100));
-                    this.health = this.health/2;
+                    damage = ((this.health * 100) + (this.magic * 100));
+                    this.health = this.health / 2;
                 } else {
-                    damage = ((this.health / 3) + (this.strength / 5) + (this.magic - this.health + 6) + (intelligence / 10));
+                    damage = ((this.health / 3) + (this.strength / 5) + (this.magic + 6) + (intelligence / 10));
                     System.out.println("**Magic Cast**");
                 }
             } else {
                 damage = this.strength;
-                magic += 15;
+                magic += 20;
             }
+        }
 
-        }return target.takeDamage(damage);
+        return target.takeDamage(damage);
     }
 
-    @Override
-    public int getDefense() {
-        return defense;
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public boolean isAccuracy() {
+        return accuracy;
+    }
+
+    public void setAccuracy(boolean accuracy) {
+        this.accuracy = accuracy;
+    }
+
+    public boolean isOverPower() {
+        return overPower;
+    }
+
+    public void setOverPower(boolean overPower) {
+        this.overPower = overPower;
     }
 }

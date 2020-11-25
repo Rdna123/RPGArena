@@ -38,25 +38,30 @@ public abstract class Player{
     }
 
     public int takeDamage(int damage) {
-            int damageTaken = damage - getDefense();
-            if(damageTaken > 0){
+        int damageTaken = damage - getDefense();
+        if(damageTaken > 0){
             this.health -= damageTaken;
             return damageTaken;
-            } else if (damageTaken<0){
+
+        } else if (damageTaken<0){
             return 0;
-            }
-            return 0;
-            }
+        }
+
+        return 0;
+    }
 
     public int attack(Player target) {
             int damage = getStrength();
             return target.takeDamage(damage);
-            }
+        }
+
 
     public boolean isAlive(){
             return this.health > 0;
     }
 
+
+//  Getters and Setters for class functions.
     public String getName() {
         return name;
     }
