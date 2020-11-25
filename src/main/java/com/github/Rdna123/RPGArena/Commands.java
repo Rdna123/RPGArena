@@ -10,13 +10,11 @@
 
 package com.github.Rdna123.RPGArena;
 
-import com.github.Rdna123.RPGArena.Bot.RPGArenaBot;
 import com.github.Rdna123.RPGArena.Game.Arena;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
-import javax.security.auth.login.LoginException;
 import javax.swing.*;
 import java.util.Scanner;
 
@@ -28,7 +26,7 @@ public class Commands {
 
     private static boolean quit = false;
 
-    public static void main(String[] args) throws LoginException, ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
         mode = true;
 
 
@@ -61,15 +59,7 @@ public class Commands {
             if (!input.equalsIgnoreCase("shutdown")) {
                 if (input.equalsIgnoreCase("game")) {
                     Arena.arena();
-                } else if (input.equalsIgnoreCase("bot")) {
-                    if (mode) {
 
-                        RPGArenaBot.botStart();
-
-                    } else {
-
-                        System.out.println("This command not available in offline mode");
-                    }
                 } else if (input.equalsIgnoreCase("discord")){
 
                     System.out.println("Discord Server: https://discord.gg/ndG8bh73sy");
@@ -81,7 +71,7 @@ public class Commands {
                 } else {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
-                            "\nGame - Starts game.\nbot - starts bot\ndiscord - The official discord server" +
+                            "\nGame - Starts game.\ndiscord - The official discord server" +
                             "\nmode - Allows Change of game mode" +
                             "\nshutdown - End this test peacefully.");
                 }
