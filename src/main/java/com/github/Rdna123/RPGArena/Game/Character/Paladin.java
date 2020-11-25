@@ -55,7 +55,7 @@ public class Paladin extends Player {
         return Inspiration;
     }
 
-    public void setInspiration(int inspiration) {
-        Inspiration = inspiration;
+    public void setInspiration(int Inspiration) {
+        this.Inspiration = Inspiration;
     }
 }
