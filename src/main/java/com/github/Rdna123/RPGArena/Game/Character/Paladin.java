@@ -51,10 +51,12 @@ public class Paladin extends Player {
         return 0;
     }
 
+    @SuppressWarnings("unused")
     public int getInspiration() {
         return Inspiration;
     }
 
+    @SuppressWarnings("unused")
     public void setInspiration(int Inspiration) {
         this.Inspiration = Inspiration;
     }

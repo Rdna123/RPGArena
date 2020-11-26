@@ -59,23 +59,27 @@ public class Mage extends Player {
         return target.takeDamage(damage);
     }
 
-
+    @SuppressWarnings("unused")
     public int getIntelligence() {
         return intelligence;
     }
 
+    @SuppressWarnings("unused")
     public boolean isAccuracy() {
         return accuracy;
     }
 
+    @SuppressWarnings("unused")
     public void setAccuracy(boolean accuracy) {
         this.accuracy = accuracy;
     }
 
+    @SuppressWarnings("unused")
     public boolean isOverPower() {
         return overPower;
     }
 
+    @SuppressWarnings("unused")
     public void setOverPower(boolean overPower) {
         this.overPower = overPower;
     }
