@@ -11,12 +11,14 @@
 package com.github.Rdna123.RPGArena;
 
 import com.github.Rdna123.RPGArena.Game.Arena;
+
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
-import javax.swing.*;
+
 import java.util.Scanner;
+
 
 public class Main{
 
@@ -28,7 +30,12 @@ public class Main{
 
     public static String command;
 
-    public static void main(String[] args) throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+
+
+
+    public static void main(String[] args) throws Exception {
+
+
         mode = true;
 
 
@@ -138,6 +145,6 @@ public class Main{
             }).build();
             DiscordRPC.discordInitialize("776862425625395271", handlers, false);
             DiscordRPC.discordRegister("776862425625395271", "");
-        }
     }
+}
 
