@@ -3,6 +3,15 @@ name: 'Nightly Merge'
 on:
   schedule:
     - cron:  '0 0 * * *'
+  
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Manual Nightly'     
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Push the nighly branch'  
 
 jobs:
   nightly-merge:
