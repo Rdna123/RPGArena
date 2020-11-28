@@ -17,9 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       
-    - uses: actions/upload-artifact@v2
-      with:
-         path: '**/target/*.jar'
+
       
       
     - name: Cache
@@ -41,6 +39,6 @@ jobs:
       
     - uses: actions/upload-artifact@v2
       with:
-         path: path/to/artifact/world.txt
+         path: '**/target/*.jar'
       
     
