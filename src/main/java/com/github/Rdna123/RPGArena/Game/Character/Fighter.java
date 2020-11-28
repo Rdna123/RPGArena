@@ -16,8 +16,6 @@ package com.github.Rdna123.RPGArena.Game.Character;
  */
 public class Fighter extends Player {
 
-
-    public String className;
     public int strength;
     public int health;
     public int defense;

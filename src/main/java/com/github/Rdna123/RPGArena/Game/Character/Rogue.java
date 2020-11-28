@@ -18,15 +18,13 @@ public class Rogue extends Player {
 
     private int dexterity = 25;
 
-    private int defense;
-
     public Rogue(int str, int def){
         super(str, def);
         setClassName("Rogue ");
         this.strength = str-1;
         setStrength(this.strength);
-        this.defense = def - 1;
-        setDefense(this.defense);
+        int defense = def - 1;
+        setDefense(defense);
         this.health = 100-12;
         setHealth(this.health);
     }
@@ -44,10 +42,12 @@ public class Rogue extends Player {
         return target.takeDamage(damage);
     }
 
+    @SuppressWarnings("unused")
     public int getDexterity() {
         return dexterity;
     }
 
+    @SuppressWarnings("unused")
     public void setDexterity(int dexterity) {
         this.dexterity = dexterity;
     }
