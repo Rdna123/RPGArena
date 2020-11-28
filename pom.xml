@@ -30,19 +30,12 @@
     </repositories>
 
     <dependencies>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.nixxcode.jvmbrotli</groupId>
-            <artifactId>jvmbrotli</artifactId>
-            <version>0.2.0</version>
-            <optional>true</optional>
-        </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -56,13 +49,6 @@
             <artifactId>discord-rpc</artifactId>
             <version>1.6.2</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.github.Hive2Hive.Hive2Hive</groupId>
-            <artifactId>org.hive2hive.client</artifactId>
-            <version>1.2.4</version>
-        </dependency>
-
     </dependencies>
 
 
@@ -71,10 +57,6 @@
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>
 
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                </plugin>
 
                 <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
                 <plugin>
