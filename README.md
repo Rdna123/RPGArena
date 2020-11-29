@@ -3,6 +3,6 @@
 
 Basic Classes for a text RPG with some presets
 
-Used JDA and discord-rpc java libraries.
+Uses discord-rpc java libraries.
 
 My development Discord: <https://discord.gg/ndG8bh73sy>
