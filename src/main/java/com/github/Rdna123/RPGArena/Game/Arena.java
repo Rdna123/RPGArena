@@ -13,11 +13,9 @@ package com.github.Rdna123.RPGArena.Game;
 import com.github.Rdna123.RPGArena.Game.Character.Player;
 import com.github.Rdna123.RPGArena.Main;
 import com.github.Rdna123.RPGArena.Game.Character.Fighter;
+import com.github.Rdna123.RPGArena.Utils.Input;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
-
-import javax.swing.*;
-import java.util.Scanner;
 
 public class Arena {
 
@@ -29,23 +27,12 @@ public class Arena {
     public static boolean running;
     public static Player fighter1, fighter2;
 
-    public static void arena() throws ClassNotFoundException, UnsupportedLookAndFeelException, InstantiationException, IllegalAccessException {
+    public static void game() {
         running = true;
-
-        graphics.game();
 
 
         fighter1 = new Fighter(0, 2);
         fighter2 = new Fighter(0, 2);
-//        player1.name = "Billy Bob";
-//        player1.strength = 2;
-//        player1.health = 50;
-//        player1.defense = 1;
-//
-//        player2.name = "Steve";
-//        player2.strength = 1;
-//        player2.health = 50;
-//        player2.defense = 2;
 
         while (running) {
 
@@ -59,11 +46,9 @@ public class Arena {
 
 
             }
-            System.out.print("> ");
-            Scanner in = new Scanner(System.in);
-            String input = in.nextLine();
 
-            Main.command = input.replaceAll("\\s", "").toLowerCase();
+
+            Main.command = Input.inString("Game");
 
             if (!Main.command.equals("quit")) {
                 if(Main.command.equals("custom")){
@@ -117,11 +102,9 @@ public class Arena {
                             "\nplay - play game.\ncustom - make a custom character\nquit - End this test peacefully.");
                     }
             } else {
-               graphics.frame.dispose();
                running=false;
             }
         }
-        graphics.frame.dispose();
         running=false;
     }
 }
