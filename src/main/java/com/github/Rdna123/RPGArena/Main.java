@@ -97,7 +97,7 @@ public class Main {
         }
     }
 
-    public static void login() {
+    public static boolean login() {
 
         System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
         System.out.print("mode > ");
@@ -133,6 +133,7 @@ public class Main {
         if (mode) {
             initDiscord();
         }
+        return true;
     }
 
     private  static void end(){
