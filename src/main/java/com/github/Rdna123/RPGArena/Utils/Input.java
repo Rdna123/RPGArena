@@ -8,52 +8,32 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-package com.github.Rdna123.RPGArena.Game.Character;
+package com.github.Rdna123.RPGArena.Utils;
 
+import java.util.Scanner;
 
-/**
- * Base class for character types.
- */
-public class Fighter extends Player {
+public class Input {
 
-    public int strength;
-    public int health;
-    public int defense;
-
-    public int wins;
-
-
-
-    public Fighter(int str, int def) {
-        super(str, def);
-        setClassName("Fighter ");
-        this.wins = 0;
-        this.strength = str;
-        this.defense = def;
-        this.health = 100;
+    /**
+     * @param Message
+     * The what the input is for.
+     * @return String
+     */
+    public static String inString(String Message){
+        System.out.print(Message+"> ");
+        Scanner in = new Scanner(System.in);
+        String input = in.nextLine();
+        input = input.replaceAll(" ", "").toLowerCase();
+        return input;
     }
-
-    @Override
-    public int takeDamage(int damage) {
-        int damageTaken = damage - this.defense;
-        if(damageTaken > 0){
-            this.health -= damageTaken;
-            return damageTaken;
-        } else if (damageTaken<0){
-            return 0;
-        }
-        return 0;
+    public static int inNum(String Message){
+        System.out.print(Message+"> ");
+        Scanner in = new Scanner(System.in);
+        return in.nextInt();
     }
-
-    @Override
-    public int attack(Player target) {
-        int damage = this.strength * 2;
-        return target.takeDamage(damage);
+    public static Boolean inBoolean(String Message){
+        System.out.print(Message+"> ");
+        Scanner in = new Scanner(System.in);
+        return in.nextBoolean();
     }
-
-    @Override
-    public boolean isAlive(){
-        return this.health > 0;
-    }
-
 }

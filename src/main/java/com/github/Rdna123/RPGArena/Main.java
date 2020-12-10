@@ -11,7 +11,7 @@
 package com.github.Rdna123.RPGArena;
 
 import com.github.Rdna123.RPGArena.Game.Arena;
-
+import com.github.Rdna123.RPGArena.Utils.Input;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
@@ -20,7 +20,7 @@ import net.arikia.dev.drpc.DiscordRichPresence;
 import java.util.Scanner;
 
 
-public class Main{
+public class Main {
 
     public static boolean mode = true;
 
@@ -33,7 +33,7 @@ public class Main{
 
 
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
 
 
         mode = true;
@@ -56,33 +56,40 @@ public class Main{
                 DiscordRPC.discordRunCallbacks();
             }
 
-            System.out.print("Main Menu> ");
-            Scanner in = new Scanner(System.in);
-            String input = in.nextLine();
+            command = Input.inString("Main Menu");
 
-            command = input.replaceAll(" ", "").toLowerCase();
+
 
             if (!command.equals("shutdown")) {
-                if (command.equals("s")){
-                    end();
+                switch (command) {
+                    case "s":
+                        end();
 
-                }else if (command.equals("game") || command.equals("g")) {
-                    Arena.arena();
+                        break;
+                    case "game":
+                    case "g":
+                        Arena.game();
 
-                } else if (command.equals("discord") || input.equals("d")){
+                        break;
+                    case "discord":
+                    case "d":
 
-                    System.out.println("Discord Server: https://discord.gg/ndG8bh73sy");
+                        System.out.println("Discord Server: https://discord.gg/ndG8bh73sy");
 
-                }else if (command.equals("mode") || command.equals("m")){
+                        break;
+                    case "mode":
+                    case "m":
 
-                    login();
+                        login();
 
-                } else {
-                    System.out.println("Unknown Command: " +
-                            "\n\nAvailable Commands:" +
-                            "\nGame - Starts game.\ndiscord - The official discord server" +
-                            "\nmode - Allows Change of game mode" +
-                            "\nshutdown - End this test peacefully.");
+                        break;
+                    default:
+                        System.out.println("Unknown Command: " +
+                                "\n\nAvailable Commands:" +
+                                "\nGame - Starts game.\ndiscord - The official discord server" +
+                                "\nmode - Allows Change of game mode" +
+                                "\nshutdown - End this test peacefully.");
+                        break;
                 }
             } else {
                 end();
@@ -90,7 +97,7 @@ public class Main{
         }
     }
 
-    public static void login() {
+    public static boolean login() {
 
         System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
         System.out.print("mode > ");
@@ -126,6 +133,7 @@ public class Main{
         if (mode) {
             initDiscord();
         }
+        return true;
     }
 
     private  static void end(){

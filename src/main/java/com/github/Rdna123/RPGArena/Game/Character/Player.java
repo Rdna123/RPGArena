@@ -25,10 +25,6 @@ public abstract class Player{
     @SuppressWarnings("SpellCheckingInspection")
     public static String[] nameList = {"Geoff", "Steve", "Krogar", "Dave", "Keith", "Deven"};
 
-    /**
-     * Blank Constructor used for custom characters.
-     */
-
 
     public Player(int str, int def) {
             this.name = nameList[(int)( Math.random() * 6)];

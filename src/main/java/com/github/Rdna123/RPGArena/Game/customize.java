@@ -34,6 +34,7 @@ public class customize {
             in = new Scanner(System.in);
             input = in.nextLine();
 
+
             String inno = input.toLowerCase();
 
             System.out.println("Enter strength");
