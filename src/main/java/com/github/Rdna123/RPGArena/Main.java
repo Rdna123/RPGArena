@@ -31,19 +31,17 @@ public class Main {
     public static String command;
 
 
-
-
     public static void main(String[] args) {
 
 
         mode = true;
 
 
-        login();
+
 
 
         while (!quit) {
-            if (mode) {
+            if ( login()) {
                 DiscordRPC.discordRunCallbacks();
                 if (!ready)
                     continue;
@@ -132,8 +130,9 @@ public class Main {
         }
         if (mode) {
             initDiscord();
+            return true;
         }
-        return true;
+        return false;
     }
 
     private  static void end(){
