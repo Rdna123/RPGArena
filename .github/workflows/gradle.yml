@@ -25,10 +25,3 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Upload a Build Artifact
-      uses: actions/upload-artifact@v2.2.2
-        # The desired behavior if no files are found using the provided path.
-      with:
-        warn: Output a warning but do not fail the action
-        error: Fail the action with an error message
-        ignore: Do not output any warnings or errors, the action does not fail
