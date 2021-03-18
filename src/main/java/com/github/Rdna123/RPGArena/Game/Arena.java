@@ -17,6 +17,8 @@ import com.github.Rdna123.RPGArena.Utils.Input;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
+import static com.github.Rdna123.RPGArena.Utils.Input.command;
+
 public class Arena {
 
 
@@ -48,14 +50,16 @@ public class Arena {
             }
 
 
-            Main.command = Input.inString("Game");
+            String input = Input.inString("Game");
 
-            if (!Main.command.equals("quit")) {
-                if(Main.command.equals("custom")){
+
+
+            if (!input.equals("quit")) {
+                if (input.equals("custom")){
 
                     customize.custom();
 
-                } else if (Main.command.equals("play")) {
+                } else if (input.equals("play")) {
 
                     if (blank){
                         fighter1 = new Fighter(12, 10);
@@ -105,6 +109,5 @@ public class Arena {
                running=false;
             }
         }
-        running=false;
     }
 }

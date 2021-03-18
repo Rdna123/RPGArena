@@ -17,19 +17,12 @@ import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
 
-import java.util.Scanner;
-
-
 public class Main {
 
     public static boolean mode = true;
-
-    private static boolean ready = false;
-
-    private static boolean quit = false;
-
     public static String command;
-
+    private static boolean ready = false;
+    private static boolean quit = false;
 
     public static void main(String[] args) {
 
@@ -37,11 +30,11 @@ public class Main {
         mode = true;
 
 
-
+        boolean loginSuccess = login();
 
 
         while (!quit) {
-            if ( login()) {
+            if (loginSuccess) {
                 DiscordRPC.discordRunCallbacks();
                 if (!ready)
                     continue;
@@ -55,8 +48,6 @@ public class Main {
             }
 
             command = Input.inString("Main Menu");
-
-
 
             if (!command.equals("shutdown")) {
                 switch (command) {
@@ -98,24 +89,14 @@ public class Main {
     public static boolean login() {
 
         System.out.println("Mode Enter 'true' for online mode or 'false' for offline \n default is 'true'");
-        System.out.print("mode > ");
-        Scanner in = new Scanner(System.in);
-
-        Main.command  = in.nextLine();
-
-        command = command.replaceAll("\\s", "").toLowerCase();
-
-        String obj = command;
+        String obj = Input.inString("Mode");
 
         while (true) {
-            if (obj.equals("true") || obj.equals("t")){
+            if (obj.equals("true") || obj.equals("t") || obj.isEmpty()) {
                 mode = true;
                 break;
-            } else if (obj.isEmpty()){
-                mode = true;
-                break;
-            } else if (obj.equals("false") || obj.equals("f")){
-                if (mode){
+            } else if (obj.equals("false") || obj.equals("f")) {
+                if (mode) {
                     DiscordRPC.discordShutdown();
                 }
                 mode = false;
@@ -123,35 +104,37 @@ public class Main {
             } else {
                 System.out.println("Please enter valid word\n" +
                         "Mode Enter 'true' for online mode or 'false' for offline \ndefault is 'true'");
-                System.out.print("mode > ");
-                in = new Scanner(System.in);
-                obj = in.next();
+
+                obj = Input.inString("Mode");
             }
         }
         if (mode) {
+            System.out.println("Yes");
             initDiscord();
+            System.out.println("no");
             return true;
         }
         return false;
     }
 
-    private  static void end(){
+    private static void end() {
         quit = true;
-        if (mode){
-            DiscordRPC.discordShutdown();}
+        if (mode) {
+            DiscordRPC.discordShutdown();
+        }
         System.exit(0);
     }
 
-    private static void initDiscord(){
-            DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
-                ready = true;
-                System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");
-                DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("");
-                presence.setDetails("Running Test");
-                DiscordRPC.discordUpdatePresence(presence.build());
-            }).build();
-            DiscordRPC.discordInitialize("776862425625395271", handlers, false);
-            DiscordRPC.discordRegister("776862425625395271", "");
+    private static void initDiscord() {
+        DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler((user) -> {
+            ready = true;
+            System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");
+            DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder("");
+            presence.setDetails("Running Test");
+            DiscordRPC.discordUpdatePresence(presence.build());
+        }).build();
+        DiscordRPC.discordInitialize("776862425625395271", handlers, false);
+        DiscordRPC.discordRegister("776862425625395271", "");
     }
 }
 

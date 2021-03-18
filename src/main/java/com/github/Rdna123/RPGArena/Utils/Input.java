@@ -23,9 +23,16 @@ public class Input {
         System.out.print(Message+"> ");
         Scanner in = new Scanner(System.in);
         String input = in.nextLine();
-        input = input.replaceAll(" ", "").toLowerCase();
+        input = command(input);
         return input;
     }
+
+    public static String command(String input){
+        input = input.replaceAll("\\s", "");
+        input = input.toLowerCase();
+        return input;
+    }
+
     public static int inNum(String Message){
         System.out.print(Message+"> ");
         Scanner in = new Scanner(System.in);
