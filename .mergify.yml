@@ -1,9 +1,0 @@
-pull_request_rules:
-  - name: Automatic merge on approval
-    conditions:
-      - "#approved-reviews-by>=1"
-      - check-success=Java CI with Maven - Pull Request
-      - base=main
-    actions:
-      merge:
-        method: merge

@@ -1,3 +1,0 @@
-jdk11 = true
-build = "mvn package"
-ignore = ["DefaultCharset", "PREDICTABLE_RANDOM"]
