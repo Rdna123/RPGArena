@@ -51,9 +51,4 @@ public class Fighter extends Player {
         return target.takeDamage(damage);
     }
 
-    @Override
-    public boolean isAlive(){
-        return this.health > 0;
-    }
-
 }

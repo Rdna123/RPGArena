@@ -10,7 +10,7 @@
 
 package com.github.Rdna123.RPGArena.Game.Character;
 
-
+//TODO: Redo Whole player system
 public abstract class Player{
     public String className;
 
