@@ -10,11 +10,10 @@
 
 package com.github.Rdna123.RPGArena.Game.Character;
 
-//TODO: Redo Whole player system
 public abstract class Player{
-    public String className;
+    protected String className;
 
-    public String name;
+    protected String name;
 
     private int strength;
     public int health = getHealth();

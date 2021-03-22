@@ -10,24 +10,20 @@
 
 package com.github.Rdna123.RPGArena.Game;
 
+import com.github.Rdna123.RPGArena.Game.Character.Fighter;
 import com.github.Rdna123.RPGArena.Game.Character.Player;
 import com.github.Rdna123.RPGArena.Main;
-import com.github.Rdna123.RPGArena.Game.Character.Fighter;
 import com.github.Rdna123.RPGArena.Utils.Input;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 
-import static com.github.Rdna123.RPGArena.Utils.Input.command;
-
 public class Arena {
 
 
-
-    private static DiscordRichPresence.Builder presence;
     public static boolean blank = true;
-
     public static boolean running;
     public static Player fighter1, fighter2;
+    private static DiscordRichPresence.Builder presence;
 
     public static void game() {
         running = true;
@@ -53,20 +49,19 @@ public class Arena {
             String input = Input.inString("Game");
 
 
-
             if (!input.equals("quit")) {
-                if (input.equals("custom")){
+                if (input.equals("custom")) {
 
                     customize.custom();
 
                 } else if (input.equals("play")) {
 
-                    if (blank){
+                    if (blank) {
                         fighter1 = new Fighter(12, 10);
                         fighter2 = new Fighter(5, 10);
                     }
 
-                    System.out.println(fighter1.getClassName() + fighter1.getName() + " vs. " + fighter2.className + fighter2.name);
+                    System.out.println(fighter1.getClassName() + fighter1.getName() + " vs. " + fighter2.getClassName() + fighter2.getName());
                     System.out.println(fighter1.getHealth() + " vs. " + fighter2.getHealth() + "\n");
 
                     if (Main.mode) {
@@ -77,8 +72,8 @@ public class Arena {
 
                     while (fighter1.isAlive() && fighter2.isAlive()) {
 
-                        System.out.println(fighter1.name + ": " + fighter1.health);
-                        System.out.println(fighter2.name + ": " + fighter2.health + "\n\n");
+                        System.out.println(fighter1.getName() + ": " + fighter1.health);
+                        System.out.println(fighter2.getName() + ": " + fighter2.health + "\n\n");
 
                         int damage;
                         damage = fighter1.attack(fighter2);
@@ -88,12 +83,12 @@ public class Arena {
                         damage = fighter2.attack(fighter1);
                         System.out.println(fighter2.getName() + " hits " + fighter1.getName() + " for " + damage + "\n");
 
-                        if (!fighter1.isAlive() || !fighter2.isAlive()){
+                        if (!fighter1.isAlive() || !fighter2.isAlive()) {
                             running = false;
                         }
                     }
 
-                    if(fighter1.isAlive()) {
+                    if (fighter1.isAlive()) {
                         System.out.println(fighter1.getName() + " wins!");
                     } else if (fighter2.isAlive()) {
                         System.out.println(fighter2.getName() + " wins!");
@@ -104,9 +99,9 @@ public class Arena {
                     System.out.println("Unknown Command: " +
                             "\n\nAvailable Commands:" +
                             "\nplay - play game.\ncustom - make a custom character\nquit - End this test peacefully.");
-                    }
+                }
             } else {
-               running=false;
+                running = false;
             }
         }
     }
